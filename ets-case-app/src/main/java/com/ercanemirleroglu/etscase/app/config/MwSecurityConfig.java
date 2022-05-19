@@ -5,7 +5,6 @@ import com.ercanemirleroglu.etscase.app.authentication.JwtTokenAuthenticationFil
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -31,10 +30,8 @@ public class MwSecurityConfig extends WebSecurityConfigurerAdapter {
     );
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/swagger-ui",
-                "/swagger-ui.html",
-                "/swagger-ui.html/**",
+    public void configure(WebSecurity web) {
+        web.ignoring().antMatchers("/swagger-ui/*",
                 "/configuration/**",
                 "/swagger-resources/**",
                 "/v2/api-docs",
