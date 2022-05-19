@@ -2,6 +2,7 @@ package com.ercanemirleroglu.etscase.domain.entity;
 
 import com.ercanemirleroglu.etscase.domain.dto.DocumentDto;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Document {
     @Id
     @GeneratedValue
