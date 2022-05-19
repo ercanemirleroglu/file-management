@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,8 +30,25 @@ public class DocumentService {
                 .dto();
     }
 
-    public void update(DocumentDto documentDto) {
+    public void upload(DocumentDto documentDto) {
         Document entity = documentFactory.from(documentDto);
         documentRepository.save(entity);
+    }
+
+    public void update(Long id, DocumentDto documentDto) {
+        Optional<Document> byId = documentRepository.findById(id);
+        if (byId.isEmpty())
+            throw new IllegalArgumentException("Document not found with id: " + id);
+        Document entity = byId.get();
+        entity.update(documentDto);
+        documentRepository.save(entity);
+    }
+
+    public void delete(Long id) {
+        Optional<Document> byId = documentRepository.findById(id);
+        if (byId.isEmpty())
+            throw new IllegalArgumentException("Document not found with id: " + id);
+        Document entity = byId.get();
+        documentRepository.delete(entity);
     }
 }

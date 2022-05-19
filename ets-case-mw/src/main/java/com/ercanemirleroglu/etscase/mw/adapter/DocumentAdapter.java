@@ -1,7 +1,6 @@
 package com.ercanemirleroglu.etscase.mw.adapter;
 
 import com.ercanemirleroglu.etscase.domain.dto.DocumentDto;
-import com.ercanemirleroglu.etscase.domain.factory.DocumentFactory;
 import com.ercanemirleroglu.etscase.domain.service.DocumentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -24,11 +23,29 @@ public class DocumentAdapter {
             Arrays.stream(multipartFiles).forEach(file -> {
                 try {
                     DocumentDto documentDto = DocumentDto.from(file);
-                    documentService.update(documentDto);
+                    documentService.upload(documentDto);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             });
         }
+    }
+
+    @Transactional
+    public void updateDocument(Long id, MultipartFile[] multipartFiles) {
+        if (Objects.nonNull(multipartFiles)) {
+            Arrays.stream(multipartFiles).forEach(file -> {
+                try {
+                    DocumentDto documentDto = DocumentDto.from(file);
+                    documentService.update(id, documentDto);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+    }
+
+    public void deleteDocument(Long id) {
+        documentService.delete(id);
     }
 }

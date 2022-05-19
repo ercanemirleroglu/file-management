@@ -21,4 +21,17 @@ public class DocumentRestController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping(path = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    private ResponseEntity<Void> update(@PathVariable Long id,
+                                        @RequestPart(value = "files") MultipartFile[] multipartFiles) {
+        documentAdapter.updateDocument(id, multipartFiles);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping(path = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    private ResponseEntity<Void> delete(@PathVariable Long id) {
+        documentAdapter.deleteDocument(id);
+        return ResponseEntity.ok().build();
+    }
+
 }

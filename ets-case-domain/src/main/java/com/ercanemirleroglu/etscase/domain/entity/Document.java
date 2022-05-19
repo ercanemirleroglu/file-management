@@ -1,6 +1,7 @@
 package com.ercanemirleroglu.etscase.domain.entity;
 
 import com.ercanemirleroglu.etscase.domain.dto.DocumentDto;
+import com.ercanemirleroglu.etscase.domain.dto.ExtensionDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -48,4 +49,11 @@ public class Document {
         return documentDto;
     }
 
+    public void update(DocumentDto documentDto) {
+        this.size = documentDto.getSize();
+        this.extension = Extension.valueOf(documentDto.getExtension().name());
+        this.name = documentDto.getName();
+        this.path = documentDto.getPath();
+        this.data = documentDto.getData();
+    }
 }
