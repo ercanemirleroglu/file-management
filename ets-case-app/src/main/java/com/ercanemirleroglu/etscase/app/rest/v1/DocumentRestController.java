@@ -31,7 +31,7 @@ public class DocumentRestController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping(path = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @DeleteMapping(path = "/{id}")
     private ResponseEntity<Void> delete(@PathVariable Long id) {
         documentAdapter.deleteDocument(id);
         return ResponseEntity.ok().build();
