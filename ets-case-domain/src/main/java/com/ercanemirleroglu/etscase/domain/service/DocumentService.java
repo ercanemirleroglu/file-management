@@ -20,7 +20,7 @@ public class DocumentService {
 
     public List<DocumentDto> getAll(){
         return documentRepository.findAll()
-                .stream().map(Document::dto)
+                .stream().map(Document::dtoWithoutData)
                 .collect(Collectors.toList());
     }
 

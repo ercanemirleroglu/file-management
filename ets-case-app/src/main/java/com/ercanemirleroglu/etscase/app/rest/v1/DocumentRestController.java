@@ -1,6 +1,8 @@
 package com.ercanemirleroglu.etscase.app.rest.v1;
 
 import com.ercanemirleroglu.etscase.mw.adapter.DocumentAdapter;
+import com.ercanemirleroglu.etscase.mw.model.response.DocumentListResponse;
+import com.ercanemirleroglu.etscase.mw.model.response.DocumentResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,10 +30,20 @@ public class DocumentRestController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping(path = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @DeleteMapping(path = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     private ResponseEntity<Void> delete(@PathVariable Long id) {
         documentAdapter.deleteDocument(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    private ResponseEntity<DocumentListResponse> getAll() {
+        return ResponseEntity.ok().body(documentAdapter.getAllDocuments());
+    }
+
+    @GetMapping(path = "/{id}")
+    private ResponseEntity<DocumentResponse> getById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(documentAdapter.getById(id));
     }
 
 }
