@@ -24,11 +24,12 @@ public class Document {
 
     private String name;
 
+    private Long size;
+
     @Enumerated(EnumType.STRING)
     private Extension extension;
 
     @Lob
-    @Type(type = "org.hibernate.type.BinaryType")
     private byte[] data;
 
     public DocumentDto dtoWithoutData(){
@@ -37,6 +38,7 @@ public class Document {
                 .extension(this.extension.dto())
                 .name(this.name)
                 .path(this.path)
+                .size(this.size)
                 .build();
     }
 

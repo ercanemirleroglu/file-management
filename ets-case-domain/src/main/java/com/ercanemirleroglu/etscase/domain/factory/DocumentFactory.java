@@ -13,6 +13,7 @@ public class DocumentFactory {
                 .name(documentDto.getName())
                 .path(documentDto.getPath())
                 .extension(Extension.valueOf(documentDto.getExtension().name()))
+                .size(documentDto.getSize())
                 .data(documentDto.getData())
                 .build();
     }
