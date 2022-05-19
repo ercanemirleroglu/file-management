@@ -6,7 +6,8 @@
     <modules>
         <module>ets-case-app</module>
 		<module>ets-case-domain</module>
-	</modules>
+        <module>ets-case-mw</module>
+    </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
