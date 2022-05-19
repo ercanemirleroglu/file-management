@@ -3,7 +3,7 @@ package com.ercanemirleroglu.etscase.domain.dto;
 import java.util.Arrays;
 
 public enum ExtensionDto {
-    PDF(".pdf"), JPEG(".jpeg"), JPG(".jpg"), DOCX(".docx"), XLSX(".xlsx");
+    PDF(".pdf"), JPEG(".jpeg"), JPG(".jpg"), DOCX(".docx"), XLSX(".xlsx"), PNG(".png");
 
     private final String displayValue;
 
