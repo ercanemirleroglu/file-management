@@ -5,7 +5,14 @@ import com.ercanemirleroglu.etscase.domain.entity.Document;
 import com.ercanemirleroglu.etscase.domain.factory.DocumentFactory;
 import com.ercanemirleroglu.etscase.domain.repository.DocumentRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Optional;

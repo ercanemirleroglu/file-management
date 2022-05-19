@@ -4,6 +4,7 @@ import com.ercanemirleroglu.etscase.mw.adapter.DocumentAdapter;
 import com.ercanemirleroglu.etscase.mw.model.response.DocumentListResponse;
 import com.ercanemirleroglu.etscase.mw.model.response.DocumentResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +45,11 @@ public class DocumentRestController {
     @GetMapping(path = "/{id}")
     private ResponseEntity<DocumentResponse> getById(@PathVariable Long id) {
         return ResponseEntity.ok().body(documentAdapter.getById(id));
+    }
+
+    @PostMapping(path = "/{id}/download")
+    public ResponseEntity<Resource> download(@PathVariable Long id) {
+        return documentAdapter.download(id);
     }
 
 }
